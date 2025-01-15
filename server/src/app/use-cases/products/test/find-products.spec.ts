@@ -1,12 +1,13 @@
 import { makeProduct } from "@test/factories/product-factory";
 import { InMemoryProductRepository } from "@test/repositories/in-memory-product-repository";
 
-describe("Get all products", () => {
-  it("should be able to return all products", async () => {
+describe("Find a product", () => {
+  it("should be able to return a product", async () => {
     const ProductsRepository = new InMemoryProductRepository();
     await ProductsRepository.create(makeProduct());
-    const products = await ProductsRepository.getAllProducts();
+    const product = await ProductsRepository.findByName(makeProduct().name);
 
-    expect(products).toHaveLength(1);
+    expect(product).toBeTruthy();
+    expect(product.name).toEqual(makeProduct().name);
   });
 });
