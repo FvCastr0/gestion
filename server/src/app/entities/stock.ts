@@ -1,11 +1,12 @@
 import { randomUUID } from "node:crypto";
+import { Supplier } from "./supplier";
 
 export interface StockProps {
   name: string;
   value: number;
   stock: number;
   minStock: number;
-  supplier: string;
+  supplier: Supplier;
   createdAt?: Date;
   id?: string;
 }
@@ -16,7 +17,7 @@ export class Stock {
   private _value: number;
   private _stock: number;
   private _minStock: number;
-  private _supplier: string;
+  private _supplier: Supplier;
   private _createdAt: Date;
 
   constructor({ name, value, minStock, supplier, stock }: StockProps) {
@@ -68,7 +69,7 @@ export class Stock {
   public get supplier() {
     return this._supplier;
   }
-  public set supplier(supplier: string) {
+  public set supplier(supplier: Supplier) {
     this._supplier = supplier;
   }
 }

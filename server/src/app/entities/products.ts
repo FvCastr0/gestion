@@ -1,5 +1,5 @@
-import { Stock } from '@app/entities/Stock';
-import { randomUUID } from 'node:crypto';
+import { Stock } from "@app/entities/Stock";
+import { randomUUID } from "node:crypto";
 
 export interface ProductProps {
   name: string;

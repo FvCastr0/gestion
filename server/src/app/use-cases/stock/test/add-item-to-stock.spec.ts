@@ -1,12 +1,14 @@
 import { makeStock } from "@test/factories/stock-factory";
 import { InMemoryStockRepository } from "@test/repositories/in-memory-stock-repository";
+import { InMemorySupplierRepository } from "@test/repositories/in-memory-supplier-repository";
 import { AddItemToStock } from "../add-item-to-stock";
 
 describe("Add item to stock", () => {
   it("should be able add an item to stock", async () => {
     const StockRepository = new InMemoryStockRepository();
+    const SupplierRepository = new InMemorySupplierRepository();
 
-    await new AddItemToStock(StockRepository).execute(
+    await new AddItemToStock(StockRepository, SupplierRepository).execute(
       makeStock({ name: "Farinha de rosca" }),
     );
 

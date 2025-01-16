@@ -1,6 +1,6 @@
-import { Stock } from '@app/entities/Stock';
-import { StockRepository } from '@app/repository/stock-repository';
-import { ItemNotFound } from './errors/item-not-found';
+import { Stock } from "@app/entities/Stock";
+import { StockRepository } from "@app/repository/stock-repository";
+import { ItemNotFound } from "./errors/item-not-found";
 
 interface GetStockItemRequest {
   itemName: string;

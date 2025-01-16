@@ -1,4 +1,6 @@
+import { Supplier } from "@app/entities/supplier";
 import { StockRepository } from "@app/repository/stock-repository";
+import { SupplierRepository } from "@app/repository/supplier-repository";
 import { ItemAlreadyExist } from "./errors/item-already-exist";
 
 interface AddItemToStockRequest {
@@ -6,13 +8,16 @@ interface AddItemToStockRequest {
   value: number;
   stock: number;
   minStock: number;
-  supplier: string;
+  supplier: Supplier;
 }
 
 type AddItemToStockResponse = void;
 
 export class AddItemToStock {
-  constructor(private stockRepository: StockRepository) {}
+  constructor(
+    private stockRepository: StockRepository,
+    private supplierRepository: SupplierRepository,
+  ) {}
   async execute(
     request: AddItemToStockRequest,
   ): Promise<AddItemToStockResponse> {
@@ -21,6 +26,7 @@ export class AddItemToStock {
     const item = await this.stockRepository.findItemByName(name);
 
     if (item) throw new ItemAlreadyExist();
+    await this.supplierRepository.findSupplier(supplier.name);
 
     await this.stockRepository.createItemStock({
       name,
