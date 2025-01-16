@@ -1,7 +1,6 @@
 import { Stock, StockProps } from "@app/entities/Stock";
 import { StockRepository } from "@app/repository/stock-repository";
 import { ItemAlreadyExist } from "@app/use-cases/stock/errors/item-already-exist";
-import { ItemNotFound } from "@app/use-cases/stock/errors/item-not-found";
 import { makeStock } from "@test/factories/stock-factory";
 
 export class InMemoryStockRepository implements StockRepository {
@@ -37,8 +36,6 @@ export class InMemoryStockRepository implements StockRepository {
       (stockItem) => stockItem.name === name,
     );
     this.stock[itemIndex].value = value;
-    if (itemIndex !== -1) {
-    } else throw new ItemNotFound();
   }
 
   async deleteItemFromStock(name: string): Promise<void> {

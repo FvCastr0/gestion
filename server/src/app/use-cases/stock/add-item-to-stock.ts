@@ -1,5 +1,5 @@
-import { StockRepository } from '@app/repository/stock-repository';
-import { ItemAlreadyExist } from './errors/item-already-exist';
+import { StockRepository } from "@app/repository/stock-repository";
+import { ItemAlreadyExist } from "./errors/item-already-exist";
 
 interface AddItemToStockRequest {
   name: string;

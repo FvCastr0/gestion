@@ -1,5 +1,5 @@
-import { StockRepository } from '@app/repository/stock-repository';
-import { ItemNotFound } from './errors/item-not-found';
+import { StockRepository } from "@app/repository/stock-repository";
+import { ItemNotFound } from "./errors/item-not-found";
 
 interface DeleteItemFromStockRequest {
   name: string;
